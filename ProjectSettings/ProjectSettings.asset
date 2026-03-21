@@ -744,7 +744,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -766,11 +772,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: e2f9a5a2-5ee5-49f5-9433-33e846e9baef
+  cloudProjectId: ee428d43-1486-46ab-85ef-ec0ee2d4aadd
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: My project (4) 2026-01-14_21-28-43
-  organizationId: therobloxkiller
+  projectName: My project (4) (1)
+  organizationId: unity_b067f21f86b303400470
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
