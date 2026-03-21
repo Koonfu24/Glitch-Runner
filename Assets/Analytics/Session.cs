@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Analytics;
 
@@ -12,25 +12,35 @@ public class Session : MonoBehaviour
         await UnityServices.InitializeAsync();
     }
 
+    // กด Start ครั้งแรก
     public void StartGame()
     {
         startTime = Time.time;
         isPlaying = true;
+
+        Debug.Log("Start Session");
     }
 
-    public void EndGame()
+    // กด Respawn
+    public void OnRespawn()
     {
-        if (!isPlaying) return;
+        if (isPlaying)
+        {
+            float duration = Time.time - startTime;
 
-        float duration = Time.time - startTime;
+            CustomEvent myEvent = new CustomEvent("session_length");
+            myEvent["session_duration"] = duration;
 
-        CustomEvent myEvent = new CustomEvent("session_length");
-        myEvent["session_duration"] = duration;
+            AnalyticsService.Instance.RecordEvent(myEvent);
+            AnalyticsService.Instance.Flush();
 
-        AnalyticsService.Instance.RecordEvent(myEvent);
+            Debug.Log("Session Length: " + duration);
+        }
 
-        AnalyticsService.Instance.Flush();
+        // 🔥 เริ่มนับใหม่ทันที
+        startTime = Time.time;
+        isPlaying = true;
 
-        isPlaying = false;
+        Debug.Log("New Session Started");
     }
 }

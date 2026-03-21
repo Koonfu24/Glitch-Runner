@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity.Services.Core;
+using Unity.Services.Analytics;
 
 public class GravitySwap : MonoBehaviour
 {
@@ -7,15 +9,27 @@ public class GravitySwap : MonoBehaviour
 
     public float gravityStrength = 1f;
 
-    void Start()
+    int gPressCount = 0;
+
+    async void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        await UnityServices.InitializeAsync();
+        AnalyticsService.Instance.StartDataCollection(); // 👈 สำคัญมาก
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G)) // กด G เพื่อสลับ
+        if (Input.GetKeyDown(KeyCode.G))
         {
+            gPressCount++;
+
+            var ev = new CustomEvent("G_Click");
+            ev["Gravity"] = gPressCount;
+
+            AnalyticsService.Instance.RecordEvent(ev);
+
             SwapGravity();
         }
     }
@@ -34,6 +48,7 @@ public class GravitySwap : MonoBehaviour
             rb.gravityScale = -gravityStrength;
             transform.localScale = new Vector3(1, -1, 1);
         }
+
         rb.WakeUp();
     }
 }
