@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Endgame : MonoBehaviour
@@ -22,6 +22,17 @@ public class Endgame : MonoBehaviour
         //collision.gameObject.CompareTag("Player");
         if (collision.gameObject.CompareTag("Player") /*|| collision.gameObject.CompareTag("Player")*/)
         {
+          PlayerAna pa = collision.GetComponent<PlayerAna>();
+
+            if (pa != null)
+            {
+                pa.SendDataOnDeath();
+                pa.ResetData();
+            }
+            else
+            {
+                Debug.LogError("❌ ไม่มี PlayerAnalytics บน Player");
+            }
             SceneManager.LoadScene("YOU DIED");
         }
 

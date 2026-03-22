@@ -756,9 +756,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 981809581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f554b30b93793b4e9da6fdbbe8185be, type: 3}
+  m_Script: {fileID: 11500000, guid: b7469ceedb32f754e8687784f61c7563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gPressCount: 0
 --- !u!1 &1216800879
 GameObject:
   m_ObjectHideFlags: 0
@@ -7209,7 +7210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1ff2633c8ec2c4b9d4f16b9582abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider2D: {fileID: 1981388846}
 --- !u!61 &1981388846
 BoxCollider2D:
   m_ObjectHideFlags: 0
